@@ -1,8 +1,9 @@
-module Main exposing (..)
+module Main exposing (Model, Monster, MonsterViewModel, Msg(..), druido, hagreMetal, infinity, init, main, monster2ViewModel, monsterFieldView, ogarasu, samayouYoroi, slime, subscriptions, update, view, zoma)
 
 import Browser
 import Html exposing (..)
 import Html.Attributes exposing (class, src)
+
 
 
 ---- MODEL ----
@@ -152,13 +153,13 @@ type alias MonsterViewModel =
 
 
 monster2ViewModel : Monster -> MonsterViewModel
-monster2ViewModel _ =
+monster2ViewModel { name, hp, mp, attack, agility } =
     MonsterViewModel
-        "スライム"
-        "8"
-        "0"
-        "9"
-        "4"
+        name
+        (String.fromInt hp)
+        (String.fromFloat mp)
+        (String.fromInt attack)
+        (String.fromInt agility)
 
 
 monsterFieldView : MonsterViewModel -> Html Msg
