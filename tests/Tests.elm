@@ -20,5 +20,15 @@ suite =
                             MonsterViewModel "スライム" "8" "0" "9" "4"
                     in
                     Expect.equal actual expected
+            , test "おおがらすをViewモデルにしてみる" <|
+                \_ ->
+                    let
+                        actual =
+                            monster2ViewModel <| Monster "おおがらす" 9 0 10 6
+
+                        expected =
+                            MonsterViewModel "おおがらす" "9" "0" "10" "6"
+                    in
+                    Expect.equal actual expected
             ]
         ]
