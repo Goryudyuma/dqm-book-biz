@@ -1,4 +1,4 @@
-module Main exposing (Model, Monster, MonsterViewModel, Msg(..), druido, hagreMetal, infinity, init, main, monster2ViewModel, monsterFieldView, ogarasu, samayouYoroi, slime, subscriptions, update, view, zoma)
+module Main exposing (By(..), Dir(..), HeaderFieldViewModel, HeaderViewModel, Model, Monster, MonsterViewModel, Msg(..), Order(..), druido, hagreMetal, infinity, init, main, monster2ViewModel, monsterFieldView, ogarasu, order2HeaderViewModel, samayouYoroi, slime, subscriptions, update, view, zoma)
 
 import Browser
 import Html exposing (..)
@@ -40,6 +40,23 @@ zoma =
 
 type alias Monster =
     { name : String, hp : Int, mp : Float, attack : Int, agility : Int }
+
+
+type Dir
+    = Asc
+    | Dsc
+
+
+type By
+    = Hp
+    | Mp
+    | Attack
+    | Agility
+
+
+type Order
+    = DefaultOrder
+    | Order By Dir
 
 
 type alias Model =
@@ -133,6 +150,27 @@ monsterFieldView { name, hp, mp, attack, agility } =
         , td [] [ text attack ]
         , td [] [ text agility ]
         ]
+
+
+type alias HeaderFieldViewModel =
+    { active : String, dir : String }
+
+
+type alias HeaderViewModel =
+    { hp : HeaderFieldViewModel
+    , mp : HeaderFieldViewModel
+    , attack : HeaderFieldViewModel
+    , agility : HeaderFieldViewModel
+    }
+
+
+order2HeaderViewModel : Order -> HeaderViewModel
+order2HeaderViewModel _ =
+    HeaderViewModel
+        (HeaderFieldViewModel "" "asc")
+        (HeaderFieldViewModel "" "asc")
+        (HeaderFieldViewModel "" "asc")
+        (HeaderFieldViewModel "" "asc")
 
 
 subscriptions : Model -> Sub Msg
