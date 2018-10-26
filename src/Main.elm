@@ -5,7 +5,6 @@ import Html exposing (..)
 import Html.Attributes exposing (class, src)
 
 
-
 ---- MODEL ----
 
 
@@ -160,6 +159,7 @@ monster2ViewModel _ =
         "0"
         "9"
         "4"
+
 
 monsterFieldView : MonsterViewModel -> Html Msg
 monsterFieldView { name, hp, mp, attack, agility } =
