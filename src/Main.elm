@@ -1,4 +1,4 @@
-module Main exposing (Model, Msg(..), init, main, update, view)
+module Main exposing (..)
 
 import Browser
 import Html exposing (..)
@@ -150,6 +150,8 @@ view model =
 
 type alias MonsterViewModel =
     { name : String, hp : String, mp : String, attack : String, agility : String }
+
+
 
 
 monsterFieldView : MonsterViewModel -> Html Msg
