@@ -152,7 +152,14 @@ type alias MonsterViewModel =
     { name : String, hp : String, mp : String, attack : String, agility : String }
 
 
-
+monster2ViewModel : Monster -> MonsterViewModel
+monster2ViewModel _ =
+    MonsterViewModel
+        "スライム"
+        "8"
+        "0"
+        "9"
+        "4"
 
 monsterFieldView : MonsterViewModel -> Html Msg
 monsterFieldView { name, hp, mp, attack, agility } =
