@@ -41,4 +41,20 @@ suite =
                     in
                     Expect.equal actual expected
             ]
+        , describe "次はHeader部分のテスト"
+            [ test "デフォルトの時、全ての項目が暗い状態で、全ての矢印が上を向いている" <|
+                \_ ->
+                    let
+                        actual =
+                            order2HeaderViewModel DefaultOrder
+
+                        expected =
+                            HeaderViewModel
+                                (HeaderFieldViewModel "" "asc")
+                                (HeaderFieldViewModel "" "asc")
+                                (HeaderFieldViewModel "" "asc")
+                                (HeaderFieldViewModel "" "asc")
+                    in
+                    Expect.equal actual expected
+            ]
         ]
