@@ -157,7 +157,12 @@ monster2ViewModel { name, hp, mp, attack, agility } =
     MonsterViewModel
         name
         (String.fromInt hp)
-        (String.fromFloat mp)
+        (if mp == infinity then
+            "∞"
+
+         else
+            String.fromFloat mp
+        )
         (String.fromInt attack)
         (String.fromInt agility)
 
