@@ -1,4 +1,29 @@
-module Main exposing (By(..), Dir(..), HeaderFieldViewModel, HeaderViewModel, Model, Monster, MonsterViewModel, Msg(..), Order(..), druido, hagreMetal, infinity, init, main, monster2ViewModel, monsterFieldView, ogarasu, order2HeaderViewModel, samayouYoroi, slime, subscriptions, update, view, zoma)
+module Main exposing
+    ( By(..)
+    , Dir(..)
+    , HeaderFieldViewModel
+    , HeaderViewModel
+    , Model
+    , Monster
+    , MonsterViewModel
+    , Msg(..)
+    , Order(..)
+    , druido
+    , hagreMetal
+    , infinity
+    , init
+    , main
+    , monster2ViewModel
+    , monsterFieldView
+    , ogarasu
+    , order2HeaderViewModel
+    , samayouYoroi
+    , slime
+    , subscriptions
+    , update
+    , view
+    , zoma
+    )
 
 import Browser
 import Html exposing (..)
