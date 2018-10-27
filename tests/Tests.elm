@@ -13,6 +13,17 @@ headerOrderTest testCaseDescription actual expected =
             Expect.equal actual expected
 
 
+monsterSortTest : String -> Main.Order -> List Monster -> List Monster -> Test
+monsterSortTest testCaseDescription order monsters expected =
+    test testCaseDescription <|
+        \_ ->
+            let
+                actual =
+                    sortMonsters order monsters
+            in
+            Expect.equal actual expected
+
+
 suite : Test
 suite =
     describe "モンスター図鑑のテスト"
@@ -90,5 +101,24 @@ suite =
                     (HeaderFieldViewModel "active" "dsc")
                     (HeaderFieldViewModel "" "asc")
                 )
+            ]
+        , describe "モンスターのソートのテスト"
+            [ monsterSortTest
+                "HPが昇順のテスト"
+                (Order Hp Asc)
+                [ Monster "スライム" 8 0 9 4
+                , Monster "おおがらす" 9 0 10 6
+                , Monster "さまようよろい" 55 0 47 10
+                , Monster "ドルイド" 35 10 55 29
+                , Monster "はぐれメタル" 6 infinity 55 150
+                , Monster "ゾーマ" 4700 infinity 360 80
+                ]
+                [ Monster "はぐれメタル" 6 infinity 55 150
+                , Monster "スライム" 8 0 9 4
+                , Monster "おおがらす" 9 0 10 6
+                , Monster "ドルイド" 35 10 55 29
+                , Monster "さまようよろい" 55 0 47 10
+                , Monster "ゾーマ" 4700 infinity 360 80
+                ]
             ]
         ]
