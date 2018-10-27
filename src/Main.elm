@@ -190,12 +190,44 @@ type alias HeaderViewModel =
 
 
 order2HeaderViewModel : Order -> HeaderViewModel
-order2HeaderViewModel _ =
-    HeaderViewModel
-        (HeaderFieldViewModel "" "asc")
-        (HeaderFieldViewModel "" "asc")
-        (HeaderFieldViewModel "" "asc")
-        (HeaderFieldViewModel "" "asc")
+order2HeaderViewModel order =
+    case order of
+        DefaultOrder ->
+            HeaderViewModel
+                (HeaderFieldViewModel "" "asc")
+                (HeaderFieldViewModel "" "asc")
+                (HeaderFieldViewModel "" "asc")
+                (HeaderFieldViewModel "" "asc")
+
+        Order by dir ->
+            case by of
+                Hp ->
+                    HeaderViewModel
+                        (HeaderFieldViewModel "active" "asc")
+                        (HeaderFieldViewModel "" "asc")
+                        (HeaderFieldViewModel "" "asc")
+                        (HeaderFieldViewModel "" "asc")
+
+                Mp ->
+                    HeaderViewModel
+                        (HeaderFieldViewModel "" "asc")
+                        (HeaderFieldViewModel "active" "asc")
+                        (HeaderFieldViewModel "" "asc")
+                        (HeaderFieldViewModel "" "asc")
+
+                Attack ->
+                    HeaderViewModel
+                        (HeaderFieldViewModel "" "asc")
+                        (HeaderFieldViewModel "" "asc")
+                        (HeaderFieldViewModel "active" "asc")
+                        (HeaderFieldViewModel "" "asc")
+
+                Agility ->
+                    HeaderViewModel
+                        (HeaderFieldViewModel "" "asc")
+                        (HeaderFieldViewModel "" "asc")
+                        (HeaderFieldViewModel "" "asc")
+                        (HeaderFieldViewModel "active" "asc")
 
 
 subscriptions : Model -> Sub Msg
