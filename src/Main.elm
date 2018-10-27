@@ -183,6 +183,7 @@ view model =
             ]
         , tbody [] <|
             (model.monsters
+                |> sortMonsters model.order
                 |> List.map monster2ViewModel
                 |> List.map monsterFieldView
             )
