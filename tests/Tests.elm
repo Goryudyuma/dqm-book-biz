@@ -6,6 +6,13 @@ import Main exposing (..)
 import Test exposing (..)
 
 
+headerOrderTest : String -> HeaderViewModel -> HeaderViewModel -> Test
+headerOrderTest testCaseDescription actual expected =
+    test testCaseDescription <|
+        \_ ->
+            Expect.equal actual expected
+
+
 suite : Test
 suite =
     describe "モンスター図鑑のテスト"
@@ -42,75 +49,46 @@ suite =
                     Expect.equal actual expected
             ]
         , describe "次はHeader部分のテスト"
-            [ test "デフォルトの時、全ての項目が暗い状態で、全ての矢印が上を向いている" <|
-                \_ ->
-                    let
-                        actual =
-                            order2HeaderViewModel DefaultOrder
-
-                        expected =
-                            HeaderViewModel
-                                (HeaderFieldViewModel "" "asc")
-                                (HeaderFieldViewModel "" "asc")
-                                (HeaderFieldViewModel "" "asc")
-                                (HeaderFieldViewModel "" "asc")
-                    in
-                    Expect.equal actual expected
-            , test "HPが昇順の時、HPの項目が明るい状態で、全ての矢印が上を向いている" <|
-                \_ ->
-                    let
-                        actual =
-                            order2HeaderViewModel (Order Hp Asc)
-
-                        expected =
-                            HeaderViewModel
-                                (HeaderFieldViewModel "active" "asc")
-                                (HeaderFieldViewModel "" "asc")
-                                (HeaderFieldViewModel "" "asc")
-                                (HeaderFieldViewModel "" "asc")
-                    in
-                    Expect.equal actual expected
-            , test "MPが昇順の時、MPの項目が明るい状態で、全ての矢印が上を向いている" <|
-                \_ ->
-                    let
-                        actual =
-                            order2HeaderViewModel (Order Mp Asc)
-
-                        expected =
-                            HeaderViewModel
-                                (HeaderFieldViewModel "" "asc")
-                                (HeaderFieldViewModel "active" "asc")
-                                (HeaderFieldViewModel "" "asc")
-                                (HeaderFieldViewModel "" "asc")
-                    in
-                    Expect.equal actual expected
-            , test "HPが降順の時、HPの項目が明るい状態で、HPの矢印が下を向いていて、その他の矢印が上を向いている" <|
-                \_ ->
-                    let
-                        actual =
-                            order2HeaderViewModel (Order Hp Dsc)
-
-                        expected =
-                            HeaderViewModel
-                                (HeaderFieldViewModel "active" "dsc")
-                                (HeaderFieldViewModel "" "asc")
-                                (HeaderFieldViewModel "" "asc")
-                                (HeaderFieldViewModel "" "asc")
-                    in
-                    Expect.equal actual expected
-            , test "こうげきりょくが降順の時、こうげきりょくの項目が明るい状態で、こうげきりょくの矢印が下を向いていて、その他の矢印が上を向いている" <|
-                \_ ->
-                    let
-                        actual =
-                            order2HeaderViewModel (Order Attack Dsc)
-
-                        expected =
-                            HeaderViewModel
-                                (HeaderFieldViewModel "" "asc")
-                                (HeaderFieldViewModel "" "asc")
-                                (HeaderFieldViewModel "active" "dsc")
-                                (HeaderFieldViewModel "" "asc")
-                    in
-                    Expect.equal actual expected
+            [ headerOrderTest
+                "デフォルトの時、全ての項目が暗い状態で、全ての矢印が上を向いている"
+                (order2HeaderViewModel DefaultOrder)
+                (HeaderViewModel
+                    (HeaderFieldViewModel "" "asc")
+                    (HeaderFieldViewModel "" "asc")
+                    (HeaderFieldViewModel "" "asc")
+                    (HeaderFieldViewModel "" "asc")
+                )
+            , headerOrderTest "HPが昇順の時、HPの項目が明るい状態で、全ての矢印が上を向いている"
+                (order2HeaderViewModel (Order Hp Asc))
+                (HeaderViewModel
+                    (HeaderFieldViewModel "active" "asc")
+                    (HeaderFieldViewModel "" "asc")
+                    (HeaderFieldViewModel "" "asc")
+                    (HeaderFieldViewModel "" "asc")
+                )
+            , headerOrderTest "MPが昇順の時、MPの項目が明るい状態で、全ての矢印が上を向いている"
+                (order2HeaderViewModel (Order Mp Asc))
+                (HeaderViewModel
+                    (HeaderFieldViewModel "" "asc")
+                    (HeaderFieldViewModel "active" "asc")
+                    (HeaderFieldViewModel "" "asc")
+                    (HeaderFieldViewModel "" "asc")
+                )
+            , headerOrderTest "HPが降順の時、HPの項目が明るい状態で、HPの矢印が下を向いていて、その他の矢印が上を向いている"
+                (order2HeaderViewModel (Order Hp Dsc))
+                (HeaderViewModel
+                    (HeaderFieldViewModel "active" "dsc")
+                    (HeaderFieldViewModel "" "asc")
+                    (HeaderFieldViewModel "" "asc")
+                    (HeaderFieldViewModel "" "asc")
+                )
+            , headerOrderTest "こうげきりょくが降順の時、こうげきりょくの項目が明るい状態で、こうげきりょくの矢印が下を向いていて、その他の矢印が上を向いている"
+                (order2HeaderViewModel (Order Attack Dsc))
+                (HeaderViewModel
+                    (HeaderFieldViewModel "" "asc")
+                    (HeaderFieldViewModel "" "asc")
+                    (HeaderFieldViewModel "active" "dsc")
+                    (HeaderFieldViewModel "" "asc")
+                )
             ]
         ]
