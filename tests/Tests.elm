@@ -70,5 +70,19 @@ suite =
                                 (HeaderFieldViewModel "" "asc")
                     in
                     Expect.equal actual expected
+            , test "MPが昇順の時、MPの項目が明るい状態で、全ての矢印が上を向いている" <|
+                \_ ->
+                    let
+                        actual =
+                            order2HeaderViewModel (Order Mp Asc)
+
+                        expected =
+                            HeaderViewModel
+                                (HeaderFieldViewModel "" "asc")
+                                (HeaderFieldViewModel "active" "asc")
+                                (HeaderFieldViewModel "" "asc")
+                                (HeaderFieldViewModel "" "asc")
+                    in
+                    Expect.equal actual expected
             ]
         ]
