@@ -177,5 +177,10 @@ suite =
                 DefaultOrder
                 Mp
                 (Order Mp Asc)
+            , changeOrderTest
+                "こうげきりょくが昇順ソートの状態から、MPのソートボタンを押すと、MPが昇順ソートになる"
+                (Order Attack Asc)
+                Mp
+                (Order Mp Asc)
             ]
         ]
