@@ -187,5 +187,10 @@ suite =
                 (Order Attack Dsc)
                 Mp
                 (Order Mp Asc)
+            , changeOrderTest
+                "すばやさが昇順ソートの状態から、すばやさのソートボタンを押すと、すばやさが降順ソートになる"
+                (Order Agility Asc)
+                Agility
+                (Order Agility Dsc)
             ]
         ]
