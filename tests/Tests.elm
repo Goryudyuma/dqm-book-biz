@@ -98,5 +98,19 @@ suite =
                                 (HeaderFieldViewModel "" "asc")
                     in
                     Expect.equal actual expected
+            , test "こうげきりょくが降順の時、こうげきりょくの項目が明るい状態で、こうげきりょくの矢印が下を向いていて、その他の矢印が上を向いている" <|
+                \_ ->
+                    let
+                        actual =
+                            order2HeaderViewModel (Order Attack Dsc)
+
+                        expected =
+                            HeaderViewModel
+                                (HeaderFieldViewModel "" "asc")
+                                (HeaderFieldViewModel "" "asc")
+                                (HeaderFieldViewModel "active" "dsc")
+                                (HeaderFieldViewModel "" "asc")
+                    in
+                    Expect.equal actual expected
             ]
         ]
