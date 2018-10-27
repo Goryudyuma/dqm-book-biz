@@ -8,8 +8,10 @@ module Main exposing
     , MonsterViewModel
     , Msg(..)
     , Order(..)
+    , defaultHeaderViewModel
     , druido
     , hagreMetal
+    , headerViewModel2View
     , infinity
     , init
     , main
@@ -17,8 +19,10 @@ module Main exposing
     , monsterFieldView
     , ogarasu
     , order2HeaderViewModel
+    , orderDir2String
     , samayouYoroi
     , slime
+    , sortMonsters
     , subscriptions
     , update
     , view
@@ -82,6 +86,17 @@ type By
 type Order
     = DefaultOrder
     | Order By Dir
+
+
+sortMonsters : Order -> List Monster -> List Monster
+sortMonsters order monsters =
+    [ Monster "はぐれメタル" 6 infinity 55 150
+    , Monster "スライム" 8 0 9 4
+    , Monster "おおがらす" 9 0 10 6
+    , Monster "ドルイド" 35 10 55 29
+    , Monster "さまようよろい" 55 0 47 10
+    , Monster "ゾーマ" 4700 infinity 360 80
+    ]
 
 
 type alias Model =
