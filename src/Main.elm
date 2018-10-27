@@ -198,6 +198,16 @@ defaultHeaderViewModel =
         (HeaderFieldViewModel "" "asc")
 
 
+orderDir2String : Dir -> String
+orderDir2String dir =
+    case dir of
+        Asc ->
+            "asc"
+
+        Dsc ->
+            "dsc"
+
+
 order2HeaderViewModel : Order -> HeaderViewModel
 order2HeaderViewModel order =
     case order of
@@ -207,48 +217,24 @@ order2HeaderViewModel order =
         Order by dir ->
             case by of
                 Hp ->
-                    if dir == Asc then
-                        { defaultHeaderViewModel
-                            | hp = HeaderFieldViewModel "active" "asc"
-                        }
-
-                    else
-                        { defaultHeaderViewModel
-                            | hp = HeaderFieldViewModel "active" "dsc"
-                        }
+                    { defaultHeaderViewModel
+                        | hp = HeaderFieldViewModel "active" (orderDir2String dir)
+                    }
 
                 Mp ->
-                    if dir == Asc then
-                        { defaultHeaderViewModel
-                            | mp = HeaderFieldViewModel "active" "asc"
-                        }
-
-                    else
-                        { defaultHeaderViewModel
-                            | mp = HeaderFieldViewModel "active" "dsc"
-                        }
+                    { defaultHeaderViewModel
+                        | mp = HeaderFieldViewModel "active" (orderDir2String dir)
+                    }
 
                 Attack ->
-                    if dir == Asc then
-                        { defaultHeaderViewModel
-                            | attack = HeaderFieldViewModel "active" "asc"
-                        }
-
-                    else
-                        { defaultHeaderViewModel
-                            | attack = HeaderFieldViewModel "active" "dsc"
-                        }
+                    { defaultHeaderViewModel
+                        | attack = HeaderFieldViewModel "active" (orderDir2String dir)
+                    }
 
                 Agility ->
-                    if dir == Asc then
-                        { defaultHeaderViewModel
-                            | agility = HeaderFieldViewModel "active" "asc"
-                        }
-
-                    else
-                        { defaultHeaderViewModel
-                            | agility = HeaderFieldViewModel "active" "dsc"
-                        }
+                    { defaultHeaderViewModel
+                        | agility = HeaderFieldViewModel "active" (orderDir2String dir)
+                    }
 
 
 subscriptions : Model -> Sub Msg
