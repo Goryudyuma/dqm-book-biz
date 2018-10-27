@@ -88,15 +88,52 @@ type Order
     | Order By Dir
 
 
+ascComparison : comparable -> comparable -> Basics.Order
+ascComparison a b =
+    compare a b
+
+
+dscComparison : comparable -> comparable -> Basics.Order
+dscComparison a b =
+    case compare a b of
+        LT ->
+            GT
+
+        EQ ->
+            EQ
+
+        GT ->
+            LT
+
+
 sortMonsters : Order -> List Monster -> List Monster
 sortMonsters order monsters =
-    [ Monster "はぐれメタル" 6 infinity 55 150
-    , Monster "スライム" 8 0 9 4
-    , Monster "おおがらす" 9 0 10 6
-    , Monster "ドルイド" 35 10 55 29
-    , Monster "さまようよろい" 55 0 47 10
-    , Monster "ゾーマ" 4700 infinity 360 80
-    ]
+    case order of
+        DefaultOrder ->
+            monsters
+
+        Order by dir ->
+            let
+                comparison f m1 m2 =
+                    case dir of
+                        Asc ->
+                            ascComparison (f m1) (f m2)
+
+                        Dsc ->
+                            dscComparison (f m1) (f m2)
+            in
+            case by of
+                Hp ->
+                    List.sortWith (comparison .hp) monsters
+
+                Mp ->
+                    List.sortWith (comparison .mp) monsters
+
+                Attack ->
+                    List.sortWith (comparison .attack) monsters
+
+                Agility ->
+                    List.sortWith (comparison .agility) monsters
 
 
 type alias Model =
