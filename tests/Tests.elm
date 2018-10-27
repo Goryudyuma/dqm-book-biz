@@ -84,5 +84,19 @@ suite =
                                 (HeaderFieldViewModel "" "asc")
                     in
                     Expect.equal actual expected
+            , test "HPが降順の時、HPの項目が明るい状態で、HPの矢印が下を向いていて、その他の矢印が上を向いている" <|
+                \_ ->
+                    let
+                        actual =
+                            order2HeaderViewModel (Order Hp Dsc)
+
+                        expected =
+                            HeaderViewModel
+                                (HeaderFieldViewModel "active" "dsc")
+                                (HeaderFieldViewModel "" "asc")
+                                (HeaderFieldViewModel "" "asc")
+                                (HeaderFieldViewModel "" "asc")
+                    in
+                    Expect.equal actual expected
             ]
         ]
