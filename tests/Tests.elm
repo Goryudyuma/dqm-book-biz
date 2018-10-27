@@ -192,5 +192,10 @@ suite =
                 (Order Agility Asc)
                 Agility
                 (Order Agility Dsc)
+            , changeOrderTest
+                "すばやさが降順ソートの状態から、すばやさのソートボタンを押すと、すばやさが昇順ソートになる"
+                (Order Agility Dsc)
+                Agility
+                (Order Agility Asc)
             ]
         ]
