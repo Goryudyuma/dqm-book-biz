@@ -35,6 +35,7 @@ module Main exposing
 import Browser
 import Html exposing (..)
 import Html.Attributes exposing (class, src)
+import Html.Events exposing (onClick)
 
 
 
@@ -180,12 +181,14 @@ init _ =
 
 
 type Msg
-    = NoOp
+    = Sort By
 
 
 update : Msg -> Model -> ( Model, Cmd Msg )
-update msg model =
-    ( model, Cmd.none )
+update msg ({ order } as model) =
+    case msg of
+        Sort targetBy ->
+            ( { model | order = changeOrder targetBy order }, Cmd.none )
 
 
 
@@ -302,19 +305,19 @@ headerViewModel2View { hp, mp, attack, agility } =
     tr []
         [ th []
             [ text "なまえ" ]
-        , th [ class hp.active ]
+        , th [ class hp.active, onClick <| Sort Hp ]
             [ text "HP"
             , span [ class hp.arrow ] []
             ]
-        , th [ class mp.active ]
+        , th [ class mp.active, onClick <| Sort Mp ]
             [ text "MP"
             , span [ class mp.arrow ] []
             ]
-        , th [ class attack.active ]
+        , th [ class attack.active, onClick <| Sort Attack ]
             [ text "こうげきりょく"
             , span [ class attack.arrow ] []
             ]
-        , th [ class agility.active ]
+        , th [ class agility.active, onClick <| Sort Agility ]
             [ text "すばやさ"
             , span [ class agility.arrow ] []
             ]
