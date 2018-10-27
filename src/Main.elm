@@ -202,32 +202,64 @@ order2HeaderViewModel order =
         Order by dir ->
             case by of
                 Hp ->
-                    HeaderViewModel
-                        (HeaderFieldViewModel "active" "asc")
-                        (HeaderFieldViewModel "" "asc")
-                        (HeaderFieldViewModel "" "asc")
-                        (HeaderFieldViewModel "" "asc")
+                    if dir == Asc then
+                        HeaderViewModel
+                            (HeaderFieldViewModel "active" "asc")
+                            (HeaderFieldViewModel "" "asc")
+                            (HeaderFieldViewModel "" "asc")
+                            (HeaderFieldViewModel "" "asc")
+
+                    else
+                        HeaderViewModel
+                            (HeaderFieldViewModel "active" "dsc")
+                            (HeaderFieldViewModel "" "asc")
+                            (HeaderFieldViewModel "" "asc")
+                            (HeaderFieldViewModel "" "asc")
 
                 Mp ->
-                    HeaderViewModel
-                        (HeaderFieldViewModel "" "asc")
-                        (HeaderFieldViewModel "active" "asc")
-                        (HeaderFieldViewModel "" "asc")
-                        (HeaderFieldViewModel "" "asc")
+                    if dir == Asc then
+                        HeaderViewModel
+                            (HeaderFieldViewModel "" "asc")
+                            (HeaderFieldViewModel "active" "asc")
+                            (HeaderFieldViewModel "" "asc")
+                            (HeaderFieldViewModel "" "asc")
+
+                    else
+                        HeaderViewModel
+                            (HeaderFieldViewModel "" "asc")
+                            (HeaderFieldViewModel "active" "dsc")
+                            (HeaderFieldViewModel "" "asc")
+                            (HeaderFieldViewModel "" "asc")
 
                 Attack ->
-                    HeaderViewModel
-                        (HeaderFieldViewModel "" "asc")
-                        (HeaderFieldViewModel "" "asc")
-                        (HeaderFieldViewModel "active" "asc")
-                        (HeaderFieldViewModel "" "asc")
+                    if dir == Asc then
+                        HeaderViewModel
+                            (HeaderFieldViewModel "" "asc")
+                            (HeaderFieldViewModel "" "asc")
+                            (HeaderFieldViewModel "active" "asc")
+                            (HeaderFieldViewModel "" "asc")
+
+                    else
+                        HeaderViewModel
+                            (HeaderFieldViewModel "" "asc")
+                            (HeaderFieldViewModel "" "asc")
+                            (HeaderFieldViewModel "active" "dsc")
+                            (HeaderFieldViewModel "" "asc")
 
                 Agility ->
-                    HeaderViewModel
-                        (HeaderFieldViewModel "" "asc")
-                        (HeaderFieldViewModel "" "asc")
-                        (HeaderFieldViewModel "" "asc")
-                        (HeaderFieldViewModel "active" "asc")
+                    if dir == Asc then
+                        HeaderViewModel
+                            (HeaderFieldViewModel "" "asc")
+                            (HeaderFieldViewModel "" "asc")
+                            (HeaderFieldViewModel "" "asc")
+                            (HeaderFieldViewModel "active" "asc")
+
+                    else
+                        HeaderViewModel
+                            (HeaderFieldViewModel "" "asc")
+                            (HeaderFieldViewModel "" "asc")
+                            (HeaderFieldViewModel "" "asc")
+                            (HeaderFieldViewModel "active" "dsc")
 
 
 subscriptions : Model -> Sub Msg
