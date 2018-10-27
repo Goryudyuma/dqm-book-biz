@@ -24,6 +24,17 @@ monsterSortTest testCaseDescription order monsters expected =
             Expect.equal actual expected
 
 
+changeOrderTest : String -> Main.Order -> By -> Main.Order -> Test
+changeOrderTest testCaseDescription order by expected =
+    test testCaseDescription <|
+        \_ ->
+            let
+                actual =
+                    changeOrder by order
+            in
+            Expect.equal actual expected
+
+
 suite : Test
 suite =
     describe "モンスター図鑑のテスト"
@@ -154,5 +165,12 @@ suite =
                 , Monster "おおがらす" 9 0 10 6
                 , Monster "スライム" 8 0 9 4
                 ]
+            ]
+        , describe "ソート順の変更のテスト"
+            [ changeOrderTest
+                "初期状態から、HPのソートボタンを押すと、HPが昇順ソートになる"
+                DefaultOrder
+                Hp
+                (Order Hp Asc)
             ]
         ]
