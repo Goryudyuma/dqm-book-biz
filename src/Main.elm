@@ -140,8 +140,17 @@ sortMonsters order monsters =
 
 
 changeOrder : By -> Order -> Order
-changeOrder by order =
-    Order by Asc
+changeOrder nextBy order =
+    case order of
+        DefaultOrder ->
+            Order nextBy Asc
+
+        Order nowBy dir ->
+            if nowBy == nextBy && dir == Asc then
+                Order nextBy Dsc
+
+            else
+                Order nextBy Asc
 
 
 type alias Model =
