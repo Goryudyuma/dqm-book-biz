@@ -8,8 +8,11 @@ module Main exposing
     , MonsterViewModel
     , Msg(..)
     , Order(..)
+    , ascComparison
+    , changeOrder
     , defaultHeaderViewModel
     , druido
+    , dscComparison
     , hagreMetal
     , headerViewModel2View
     , infinity
@@ -134,6 +137,11 @@ sortMonsters order monsters =
 
                 Agility ->
                     List.sortWith (comparison .agility) monsters
+
+
+changeOrder : By -> Order -> Order
+changeOrder by order =
+    Order by Asc
 
 
 type alias Model =
