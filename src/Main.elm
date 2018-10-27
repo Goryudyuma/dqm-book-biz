@@ -189,77 +189,66 @@ type alias HeaderViewModel =
     }
 
 
+defaultHeaderViewModel : HeaderViewModel
+defaultHeaderViewModel =
+    HeaderViewModel
+        (HeaderFieldViewModel "" "asc")
+        (HeaderFieldViewModel "" "asc")
+        (HeaderFieldViewModel "" "asc")
+        (HeaderFieldViewModel "" "asc")
+
+
 order2HeaderViewModel : Order -> HeaderViewModel
 order2HeaderViewModel order =
     case order of
         DefaultOrder ->
-            HeaderViewModel
-                (HeaderFieldViewModel "" "asc")
-                (HeaderFieldViewModel "" "asc")
-                (HeaderFieldViewModel "" "asc")
-                (HeaderFieldViewModel "" "asc")
+            defaultHeaderViewModel
 
         Order by dir ->
             case by of
                 Hp ->
                     if dir == Asc then
-                        HeaderViewModel
-                            (HeaderFieldViewModel "active" "asc")
-                            (HeaderFieldViewModel "" "asc")
-                            (HeaderFieldViewModel "" "asc")
-                            (HeaderFieldViewModel "" "asc")
+                        { defaultHeaderViewModel
+                            | hp = HeaderFieldViewModel "active" "asc"
+                        }
 
                     else
-                        HeaderViewModel
-                            (HeaderFieldViewModel "active" "dsc")
-                            (HeaderFieldViewModel "" "asc")
-                            (HeaderFieldViewModel "" "asc")
-                            (HeaderFieldViewModel "" "asc")
+                        { defaultHeaderViewModel
+                            | hp = HeaderFieldViewModel "active" "dsc"
+                        }
 
                 Mp ->
                     if dir == Asc then
-                        HeaderViewModel
-                            (HeaderFieldViewModel "" "asc")
-                            (HeaderFieldViewModel "active" "asc")
-                            (HeaderFieldViewModel "" "asc")
-                            (HeaderFieldViewModel "" "asc")
+                        { defaultHeaderViewModel
+                            | mp = HeaderFieldViewModel "active" "asc"
+                        }
 
                     else
-                        HeaderViewModel
-                            (HeaderFieldViewModel "" "asc")
-                            (HeaderFieldViewModel "active" "dsc")
-                            (HeaderFieldViewModel "" "asc")
-                            (HeaderFieldViewModel "" "asc")
+                        { defaultHeaderViewModel
+                            | mp = HeaderFieldViewModel "active" "dsc"
+                        }
 
                 Attack ->
                     if dir == Asc then
-                        HeaderViewModel
-                            (HeaderFieldViewModel "" "asc")
-                            (HeaderFieldViewModel "" "asc")
-                            (HeaderFieldViewModel "active" "asc")
-                            (HeaderFieldViewModel "" "asc")
+                        { defaultHeaderViewModel
+                            | attack = HeaderFieldViewModel "active" "asc"
+                        }
 
                     else
-                        HeaderViewModel
-                            (HeaderFieldViewModel "" "asc")
-                            (HeaderFieldViewModel "" "asc")
-                            (HeaderFieldViewModel "active" "dsc")
-                            (HeaderFieldViewModel "" "asc")
+                        { defaultHeaderViewModel
+                            | attack = HeaderFieldViewModel "active" "dsc"
+                        }
 
                 Agility ->
                     if dir == Asc then
-                        HeaderViewModel
-                            (HeaderFieldViewModel "" "asc")
-                            (HeaderFieldViewModel "" "asc")
-                            (HeaderFieldViewModel "" "asc")
-                            (HeaderFieldViewModel "active" "asc")
+                        { defaultHeaderViewModel
+                            | agility = HeaderFieldViewModel "active" "asc"
+                        }
 
                     else
-                        HeaderViewModel
-                            (HeaderFieldViewModel "" "asc")
-                            (HeaderFieldViewModel "" "asc")
-                            (HeaderFieldViewModel "" "asc")
-                            (HeaderFieldViewModel "active" "dsc")
+                        { defaultHeaderViewModel
+                            | agility = HeaderFieldViewModel "active" "dsc"
+                        }
 
 
 subscriptions : Model -> Sub Msg
