@@ -182,5 +182,10 @@ suite =
                 (Order Attack Asc)
                 Mp
                 (Order Mp Asc)
+            , changeOrderTest
+                "こうげきりょくが降順ソートの状態から、MPのソートボタンを押すと、MPが昇順ソートになる"
+                (Order Attack Dsc)
+                Mp
+                (Order Mp Asc)
             ]
         ]
