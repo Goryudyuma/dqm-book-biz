@@ -172,5 +172,10 @@ suite =
                 DefaultOrder
                 Hp
                 (Order Hp Asc)
+            , changeOrderTest
+                "初期状態から、MPのソートボタンを押すと、MPが昇順ソートになる"
+                DefaultOrder
+                Mp
+                (Order Mp Asc)
             ]
         ]
