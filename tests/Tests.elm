@@ -64,42 +64,42 @@ suite =
                 "デフォルトの時、全ての項目が暗い状態で、全ての矢印が上を向いている"
                 (order2HeaderViewModel DefaultOrder)
                 (HeaderViewModel
-                    (HeaderFieldViewModel "" "asc")
-                    (HeaderFieldViewModel "" "asc")
-                    (HeaderFieldViewModel "" "asc")
-                    (HeaderFieldViewModel "" "asc")
+                    (HeaderFieldViewModel "" "arrow asc")
+                    (HeaderFieldViewModel "" "arrow asc")
+                    (HeaderFieldViewModel "" "arrow asc")
+                    (HeaderFieldViewModel "" "arrow asc")
                 )
             , headerOrderTest "HPが昇順の時、HPの項目が明るい状態で、全ての矢印が上を向いている"
                 (order2HeaderViewModel (Order Hp Asc))
                 (HeaderViewModel
-                    (HeaderFieldViewModel "active" "asc")
-                    (HeaderFieldViewModel "" "asc")
-                    (HeaderFieldViewModel "" "asc")
-                    (HeaderFieldViewModel "" "asc")
+                    (HeaderFieldViewModel "active" "arrow asc")
+                    (HeaderFieldViewModel "" "arrow asc")
+                    (HeaderFieldViewModel "" "arrow asc")
+                    (HeaderFieldViewModel "" "arrow asc")
                 )
             , headerOrderTest "MPが昇順の時、MPの項目が明るい状態で、全ての矢印が上を向いている"
                 (order2HeaderViewModel (Order Mp Asc))
                 (HeaderViewModel
-                    (HeaderFieldViewModel "" "asc")
-                    (HeaderFieldViewModel "active" "asc")
-                    (HeaderFieldViewModel "" "asc")
-                    (HeaderFieldViewModel "" "asc")
+                    (HeaderFieldViewModel "" "arrow asc")
+                    (HeaderFieldViewModel "active" "arrow asc")
+                    (HeaderFieldViewModel "" "arrow asc")
+                    (HeaderFieldViewModel "" "arrow asc")
                 )
             , headerOrderTest "HPが降順の時、HPの項目が明るい状態で、HPの矢印が下を向いていて、その他の矢印が上を向いている"
                 (order2HeaderViewModel (Order Hp Dsc))
                 (HeaderViewModel
-                    (HeaderFieldViewModel "active" "dsc")
-                    (HeaderFieldViewModel "" "asc")
-                    (HeaderFieldViewModel "" "asc")
-                    (HeaderFieldViewModel "" "asc")
+                    (HeaderFieldViewModel "active" "arrow dsc")
+                    (HeaderFieldViewModel "" "arrow asc")
+                    (HeaderFieldViewModel "" "arrow asc")
+                    (HeaderFieldViewModel "" "arrow asc")
                 )
             , headerOrderTest "こうげきりょくが降順の時、こうげきりょくの項目が明るい状態で、こうげきりょくの矢印が下を向いていて、その他の矢印が上を向いている"
                 (order2HeaderViewModel (Order Attack Dsc))
                 (HeaderViewModel
-                    (HeaderFieldViewModel "" "asc")
-                    (HeaderFieldViewModel "" "asc")
-                    (HeaderFieldViewModel "active" "dsc")
-                    (HeaderFieldViewModel "" "asc")
+                    (HeaderFieldViewModel "" "arrow asc")
+                    (HeaderFieldViewModel "" "arrow asc")
+                    (HeaderFieldViewModel "active" "arrow dsc")
+                    (HeaderFieldViewModel "" "arrow asc")
                 )
             ]
         , describe "モンスターのソートのテスト"

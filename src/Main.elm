@@ -221,7 +221,7 @@ monsterFieldView { name, hp, mp, attack, agility } =
 
 
 type alias HeaderFieldViewModel =
-    { active : String, dir : String }
+    { active : String, arrow : String }
 
 
 type alias HeaderViewModel =
@@ -235,20 +235,20 @@ type alias HeaderViewModel =
 defaultHeaderViewModel : HeaderViewModel
 defaultHeaderViewModel =
     HeaderViewModel
-        (HeaderFieldViewModel "" "asc")
-        (HeaderFieldViewModel "" "asc")
-        (HeaderFieldViewModel "" "asc")
-        (HeaderFieldViewModel "" "asc")
+        (HeaderFieldViewModel "" "arrow asc")
+        (HeaderFieldViewModel "" "arrow asc")
+        (HeaderFieldViewModel "" "arrow asc")
+        (HeaderFieldViewModel "" "arrow asc")
 
 
 orderDir2String : Dir -> String
 orderDir2String dir =
     case dir of
         Asc ->
-            "asc"
+            "arrow asc"
 
         Dsc ->
-            "dsc"
+            "arrow dsc"
 
 
 order2HeaderViewModel : Order -> HeaderViewModel
@@ -282,29 +282,24 @@ order2HeaderViewModel order =
 
 headerViewModel2View : HeaderViewModel -> Html Msg
 headerViewModel2View { hp, mp, attack, agility } =
-    let
-        orderBy2Arrow : String -> String
-        orderBy2Arrow dir =
-            "arrow " ++ dir
-    in
     tr []
         [ th []
             [ text "なまえ" ]
         , th [ class hp.active ]
             [ text "HP"
-            , span [ class (orderBy2Arrow hp.dir) ] []
+            , span [ class hp.arrow ] []
             ]
         , th [ class mp.active ]
             [ text "MP"
-            , span [ class (orderBy2Arrow mp.dir) ] []
+            , span [ class mp.arrow ] []
             ]
         , th [ class attack.active ]
             [ text "こうげきりょく"
-            , span [ class (orderBy2Arrow mp.dir) ] []
+            , span [ class attack.arrow ] []
             ]
         , th [ class agility.active ]
             [ text "すばやさ"
-            , span [ class (orderBy2Arrow mp.dir) ] []
+            , span [ class agility.arrow ] []
             ]
         ]
 
