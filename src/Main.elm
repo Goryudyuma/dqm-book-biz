@@ -85,12 +85,25 @@ type Order
 
 
 type alias Model =
-    {}
+    { order : Order
+    , monsters : List Monster
+    }
 
 
 init : () -> ( Model, Cmd Msg )
 init _ =
-    ( {}, Cmd.none )
+    ( { order = DefaultOrder
+      , monsters =
+            [ slime
+            , ogarasu
+            , samayouYoroi
+            , druido
+            , hagreMetal
+            , zoma
+            ]
+      }
+    , Cmd.none
+    )
 
 
 
@@ -114,36 +127,13 @@ view : Model -> Html Msg
 view model =
     table []
         [ thead []
-            [ tr []
-                [ th []
-                    [ text "なまえ" ]
-                , th [ class "" ]
-                    [ text "HP"
-                    , span [ class "arrow asc" ] []
-                    ]
-                , th [ class "" ]
-                    [ text "MP"
-                    , span [ class "arrow asc" ] []
-                    ]
-                , th [ class "" ]
-                    [ text "こうげきりょく"
-                    , span [ class "arrow asc" ] []
-                    ]
-                , th [ class "" ]
-                    [ text "すばやさ"
-                    , span [ class "arrow asc" ] []
-                    ]
-                ]
+            [ headerViewModel2View <| order2HeaderViewModel model.order
             ]
         , tbody [] <|
-            List.map monsterFieldView
-                [ MonsterViewModel "スライム" "8" "0" "9" "4"
-                , MonsterViewModel "おおがらす" "9" "0" "10" "6"
-                , MonsterViewModel "さまようよろい" "55" "0" "47" "10"
-                , MonsterViewModel "ドルイド" "35" "10" "55" "29"
-                , MonsterViewModel "はぐれメタル" "6" "∞" "55" "150"
-                , MonsterViewModel "ゾーマ" "4700" "∞" "360" "80"
-                ]
+            (model.monsters
+                |> List.map monster2ViewModel
+                |> List.map monsterFieldView
+            )
         ]
 
 
@@ -235,6 +225,35 @@ order2HeaderViewModel order =
                     { defaultHeaderViewModel
                         | agility = HeaderFieldViewModel "active" (orderDir2String dir)
                     }
+
+
+headerViewModel2View : HeaderViewModel -> Html Msg
+headerViewModel2View { hp, mp, attack, agility } =
+    let
+        orderBy2Arrow : String -> String
+        orderBy2Arrow dir =
+            "arrow " ++ dir
+    in
+    tr []
+        [ th []
+            [ text "なまえ" ]
+        , th [ class hp.active ]
+            [ text "HP"
+            , span [ class (orderBy2Arrow hp.dir) ] []
+            ]
+        , th [ class mp.active ]
+            [ text "MP"
+            , span [ class (orderBy2Arrow mp.dir) ] []
+            ]
+        , th [ class attack.active ]
+            [ text "こうげきりょく"
+            , span [ class (orderBy2Arrow mp.dir) ] []
+            ]
+        , th [ class agility.active ]
+            [ text "すばやさ"
+            , span [ class (orderBy2Arrow mp.dir) ] []
+            ]
+        ]
 
 
 subscriptions : Model -> Sub Msg
